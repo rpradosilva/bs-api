@@ -1,6 +1,4 @@
 {
   "url": "https://hotwheels.fandom.com/wiki/Bone_Shaker",
-  "table": ".table-wide-inner table",
-  "tHeadItems": ".tHead.firstElementChild.querySelectorAll('th')",
-  "models": ".querySelectorAll('tr')"
+  "tr": ".table-wide-inner table tr th"
 }
