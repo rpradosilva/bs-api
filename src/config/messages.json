@@ -1,0 +1,18 @@
+{
+  "puppeteer": {
+    "init": {
+      "id": "browser",
+      "text": {
+        "add": "Starting browser",
+        "succeed": "Browser Loaded"
+      }
+    },
+    "close": {
+      "id": "browser",
+      "text": {
+        "add": "Closing browser",
+        "succeed": "Browser closed"
+      }
+    }
+  }
+}

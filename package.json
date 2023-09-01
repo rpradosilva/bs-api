@@ -1,0 +1,30 @@
+{
+  "name": "boneshaker-api",
+  "version": "1.0.0",
+  "description": "A web scraping of the Hot Wheels Bone Shaker Fandom to a JSON file",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rpradosilva/boneshaker-api.git"
+  },
+  "keywords": [
+    "hotwheels",
+    "bone",
+    "shaker",
+    "api"
+  ],
+  "author": "Rafael Prado",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rpradosilva/boneshaker-api/issues"
+  },
+  "homepage": "https://github.com/rpradosilva/boneshaker-api#readme",
+  "dependencies": {
+    "puppeteer": "^21.1.1",
+    "spinnies": "^0.5.1"
+  }
+}
