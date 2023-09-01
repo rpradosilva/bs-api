@@ -14,5 +14,12 @@
         "succeed": "Browser closed"
       }
     }
+  },
+  "access": {
+    "id": "page",
+    "text": {
+      "add": "Access fandom",
+      "succeed": "Fandom Loaded"
+    }
   }
 }
