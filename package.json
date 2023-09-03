@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/rpradosilva/boneshaker-api#readme",
   "dependencies": {
-    "puppeteer": "^21.1.1",
-    "spinnies": "^0.5.1"
+    "tabletojson": "^2.0.7"
   }
 }

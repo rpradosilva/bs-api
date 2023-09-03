@@ -1,22 +1,15 @@
-const puppeteer = require("puppeteer");
 const fs = require("fs");
-const targets = JSON.parse(fs.readFileSync("./src/config/targets.json"));
+const tabletojson = require("tabletojson").Tabletojson;
+const url = "https://hotwheels.fandom.com/wiki/Bone_Shaker";
+const dataPath = "./json/data.json";
+let data = [];
 
-(async () => {
-  const browser = await puppeteer.launch({ headless: false, devtools: true });
-  const page = await browser.newPage();
-  await page.goto(targets.url);
-  await page.waitForSelector(".table-wide-inner table tr th");
+tabletojson.convertUrl(url, function (tablesAsJson) {
+  for (const table of tablesAsJson) {
+    if (JSON.stringify(table).indexOf("Col #") !== -1) {
+      data.push(table);
+    }
+  }
 
-  await page.evaluate(() => {
-    const nodeList = document.querySelectorAll(".table-wide-inner table tr th");
-
-    let trArray = Array.from(nodeList);
-
-    console.log(trArray[3].innerText);
-  });
-
-  // console.log(nodeList);
-
-  // await browser.close();
-})();
+  fs.writeFile(dataPath, JSON.stringify(data, null, 2), "utf-8");
+});
