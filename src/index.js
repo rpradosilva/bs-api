@@ -1,7 +1,7 @@
-const fs = require("fs");
 const tabletojson = require("tabletojson").Tabletojson;
+const fs = require("fs");
 const url = "https://hotwheels.fandom.com/wiki/Bone_Shaker";
-const dataPath = "./json/data.json";
+const dataPath = "data.json";
 let data = [];
 
 tabletojson.convertUrl(url, function (tablesAsJson) {
@@ -11,5 +11,5 @@ tabletojson.convertUrl(url, function (tablesAsJson) {
     }
   }
 
-  fs.writeFile(dataPath, JSON.stringify(data, null, 2), "utf-8");
+  fs.writeFileSync(dataPath, JSON.stringify(data, null, 2), "utf-8");
 });
