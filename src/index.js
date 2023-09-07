@@ -1,15 +1,26 @@
-const tabletojson = require("tabletojson").Tabletojson;
-const fs = require("fs");
-const url = "https://hotwheels.fandom.com/wiki/Bone_Shaker";
-const dataPath = "data.json";
-let data = [];
+const puppeteer = require("puppeteer");
+const hotWheelsFandom = "https://hotwheels.fandom.com/wiki/Bone_Shaker";
 
-tabletojson.convertUrl(url, function (tablesAsJson) {
-  for (const table of tablesAsJson) {
-    if (JSON.stringify(table).indexOf("Col #") !== -1) {
-      data.push(table);
-    }
-  }
+(async () => {
+  const browser = await puppeteer.launch({ headless: "new" });
+  const page = await browser.newPage();
+  await page.goto(hotWheelsFandom);
+  await page.setViewport({ width: 1080, height: 1024 });
+  await page.waitForSelector(".wikitable");
 
-  fs.writeFileSync(dataPath, JSON.stringify(data, null, 2), "utf-8");
-});
+  const data = await page.$$eval(".wikitable thead tr th", (data) => {
+    return data.map((table) => table.innerText);
+  });
+
+  // const data = await page.evaluate(() => {
+  //   // const tablesList = Array.from(
+  //   //   document.querySelectorAll(".wikitable thead tr th")
+  //   // );
+  //   // const tables = tablesList.map((table) => ({ src: table.innerText }));
+  //   // return teste;
+  // });
+
+  console.log(data[0]);
+
+  await browser.close();
+})();
