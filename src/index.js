@@ -1,5 +1,7 @@
 const puppeteer = require("puppeteer");
+const fs = require("fs");
 const hotWheelsFandom = "https://hotwheels.fandom.com/wiki/Bone_Shaker";
+const dataPath = "data.json";
 
 (async () => {
   const browser = await puppeteer.launch({ headless: "new" });
@@ -9,7 +11,6 @@ const hotWheelsFandom = "https://hotwheels.fandom.com/wiki/Bone_Shaker";
   await page.waitForSelector(".wikitable");
 
   const data = await page.evaluate(() => {
-    const tablesList = document.querySelectorAll(".wikitable");
     let models = [];
     let year = "td:nth-child(2)";
     let toy_code = "td:nth-child(9)";
@@ -22,58 +23,59 @@ const hotWheelsFandom = "https://hotwheels.fandom.com/wiki/Bone_Shaker";
     let wheel_type = "td:nth-child(8)";
     let madein = "td:nth-child(10)";
     let notes = "td:nth-child(11)";
+    const tablesList = document.querySelectorAll(".wikitable");
 
-    for (const table of tablesList) {
+    for (let i = 0; i < tablesList.length; i++) {
       let containsModel =
-        table.querySelector("thead tr th") != null &&
-        table.querySelector("thead tr th").innerText.indexOf("#") > 0;
-      let carsList = table.querySelectorAll("tbody tr");
+        tablesList[i].querySelector("thead tr th") != null &&
+        tablesList[i].querySelector("thead tr th").innerText.indexOf("#") > 0;
+      let carsList = tablesList[i].querySelectorAll("tbody tr");
 
       if (containsModel) {
+        let defineModel = i === 0 || i === 3 ? "open roof" : "closed roof";
+
         for (const car of carsList) {
           models.push({
-            // id: `${i}`,
             toy_code: `${car.querySelector(toy_code).innerText}`,
             toy_image: `${car.querySelector(toy_image).href}`,
             year: `${car.querySelector(year).innerText}`,
-            // model: "open_roof",
-            series: `${car.querySelector(series).innerText}`,
+            model: `${defineModel}`,
+            series: `${car
+              .querySelector(series)
+              .innerText.replace(/(\r\n|\n|\r)/g, " ")
+              .trim()}`,
             external_color: `${car.querySelector(external_color).innerText}`,
             inner_color: `${car.querySelector(inner_color).innerText}`,
-            tampo: `${car.querySelector(tampo).innerText}`,
-            details: `${car.querySelector(details).innerText}`,
-            wheel_type: `${car.querySelector(wheel_type).innerText}`,
-            // wheel_image: "",
+            tampo: `${car
+              .querySelector(tampo)
+              .innerText.replace(/(\r\n|\n|\r)/g, " ")
+              .trim()}`,
+            details: `${car
+              .querySelector(details)
+              .innerText.replace(/(\r\n|\n|\r)/g, " ")
+              .trim()}`,
+            wheel_type: `${car
+              .querySelector(wheel_type)
+              .innerText.replace(/(\r\n|\n|\r)/g, " ")
+              .trim()}`,
             madein: `${car.querySelector(madein).innerText}`,
-            notes: `${car.querySelector(notes).innerText}`,
-            // variations: [
-            //   {
-            //     toy_image: "",
-            //     year: 2020,
-            //     model: "closed_roof",
-            //     series: "2006 First Editions 6/38",
-            //     external_color: "black",
-            //     inner_color: "Dark Chrome",
-            //     tampo: "White Skull & Crossbones",
-            //     details: "Unpainted/Metal",
-            //     wheel_type: "5SP",
-            //     wheel_image: "",
-            //     madein: "Malaysia",
-            //     notes: "",
-            //   },
-            // ],
+            notes: `${car
+              .querySelector(notes)
+              .innerText.replace(/(\r\n|\n|\r)/g, " ")
+              .trim()}`,
           });
         }
-
-        // let cellsList = row.querySelectorAll("td");
-        //document.querySelector('#wonderful div:nth-child(2):nth-child(2)')
       }
+    }
+
+    for (let i = 0; i < models.length; i++) {
+      models[i].id = i + 1;
     }
 
     return models;
   });
 
-  console.log(data);
+  fs.writeFileSync(dataPath, JSON.stringify(data, null, 2), "utf-8");
 
   await browser.close();
 })();
