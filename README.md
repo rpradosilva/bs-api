@@ -17,7 +17,19 @@
 
 ## About
 
-- To use, access [JSON File](https://rpradosilva.github.io/boneshaker-api/src/api/boneshaker-api.json)
+- To use, import [JSON](https://rpradosilva.github.io/boneshaker-api/src/api/boneshaker-api.json) to your js file:
+
+```js
+const api ="https://rpradosilva.github.io/boneshaker-api/src/api/boneshaker-api.json";
+
+async function getCars(api) {
+  let apiObject = await fetch(api);
+  let boneshakers = await apiObject.json();
+  console.log(boneshakers);
+}
+
+getCars(api);
+```
 
 JSON structure example:
 
