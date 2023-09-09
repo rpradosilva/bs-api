@@ -36,33 +36,42 @@ const dataPath = "./src/api/boneshaker-api.json";
 
         for (const car of carsList) {
           models.push({
-            toy_code: `${car.querySelector(toy_code).innerText}`,
+            toy_code: `${car.querySelector(toy_code).innerText.toUpperCase()}`,
             toy_image: `${car.querySelector(toy_image).href}`,
             year: `${car.querySelector(year).innerText}`,
             model: `${defineModel}`,
             series: `${car
               .querySelector(series)
               .innerText.replace(/(\r\n|\n|\r)/g, " ")
-              .trim()}`,
-            external_color: `${car.querySelector(external_color).innerText}`,
-            inner_color: `${car.querySelector(inner_color).innerText}`,
+              .trim()
+              .toLowerCase()}`,
+            external_color: `${car
+              .querySelector(external_color)
+              .innerText.toLowerCase()}`,
+            inner_color: `${car
+              .querySelector(inner_color)
+              .innerText.toLowerCase()}`,
             tampo: `${car
               .querySelector(tampo)
               .innerText.replace(/(\r\n|\n|\r)/g, " ")
-              .trim()}`,
+              .trim()
+              .toLowerCase()}`,
             details: `${car
               .querySelector(details)
               .innerText.replace(/(\r\n|\n|\r)/g, " ")
-              .trim()}`,
+              .trim()
+              .toLowerCase()}`,
             wheel_type: `${car
               .querySelector(wheel_type)
               .innerText.replace(/(\r\n|\n|\r)/g, " ")
-              .trim()}`,
-            madein: `${car.querySelector(madein).innerText}`,
+              .trim()
+              .toLowerCase()}`,
+            madein: `${car.querySelector(madein).innerText.toLowerCase()}`,
             notes: `${car
               .querySelector(notes)
               .innerText.replace(/(\r\n|\n|\r)/g, " ")
-              .trim()}`,
+              .trim()
+              .toLowerCase()}`,
           });
         }
       }
