@@ -9,22 +9,24 @@
 <br>
 <div align="center">
 
-[![About](https://img.shields.io/badge/-About-330000)](#about)
-[![License](https://img.shields.io/badge/-License-cc3333)](/LICENSE)
-[![Authors](https://img.shields.io/badge/-Author-cc3333)](#authors)
+[![About](https://img.shields.io/badge/-About-cc3333)](#about)
+[![License](https://img.shields.io/badge/-License-330000)](/LICENSE)
+[![Authors](https://img.shields.io/badge/-Author-330000)](#authors)
 
 </div>
 
 ## About
 
+- To use, access [JSON File](http://www.github.com/rpradosilva)
+
 JSON structure example:
 
 ```json
 {
-  "id": 1, // auto id
+  "id": 0, // auto id
   "toy_code": "", // string
   "toy_image": "", // string src
-  "year": 2020, // number
+  "year": 0, // number
   "model": "", // open_roof or closed_roof
   "series": "", // string
   "external_color": "", // lowercase string
@@ -32,32 +34,10 @@ JSON structure example:
   "tampo": "", // string
   "details": "", // string
   "wheel_type": "", // string
-  "wheel_image": "", // string src
   "madein": "", // string
-  "notes": "", // string
-  "variations": [
-    // array by "toy_code" - first element is default and others are variations
-    {
-      "toy_image": "", // string src
-      "year": 2020, // number
-      "model": "", // open_roof or closed_roof
-      "series": "", // string
-      "external_color": "", // lowercase string
-      "inner_color": "", // string
-      "tampo": "", // string
-      "details": "", // string
-      "wheel_type": "", // string
-      "wheel_image": "", // string src
-      "madein": "", // string
-      "notes": "" // string
-    }
-  ]
+  "notes": "" // string
 }
 ```
-
-## How to use
-
-1. [under construction]
 
 ## Authors
 

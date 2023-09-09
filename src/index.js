@@ -1,7 +1,7 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs");
 const hotWheelsFandom = "https://hotwheels.fandom.com/wiki/Bone_Shaker";
-const dataPath = "data.json";
+const dataPath = "boneshaker-api.json";
 
 (async () => {
   const browser = await puppeteer.launch({ headless: "new" });
