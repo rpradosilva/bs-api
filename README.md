@@ -1,7 +1,7 @@
 <div align="center">
-    <img src=".github/icon.png" alt="Logo Repo" width="400">
-    <h1>
-      boneshaker-api
+    <img src=".github/icon.png" alt="Logo Repo" />
+    <h1 style="padding-top: 16px;">
+      Bone Shaker API
     </h1>
     An API for all bone shaker fandom hotwheels.
 </div>
@@ -9,18 +9,19 @@
 <br>
 <div align="center">
 
-[![About](https://img.shields.io/badge/-About-cc3333)](#about)
-[![License](https://img.shields.io/badge/-License-330000)](/LICENSE)
-[![Authors](https://img.shields.io/badge/-Author-330000)](#authors)
+[![About](https://img.shields.io/badge/-About-0D0D0D)](#about)
+[![License](https://img.shields.io/badge/-License-27282A)](/LICENSE)
+[![Authors](https://img.shields.io/badge/-Author-27282A)](#authors)
 
 </div>
 
 ## About
 
-- To use, import [JSON](https://rpradosilva.github.io/boneshaker-api/src/api/boneshaker-api.json) to your js file:
+To use, import [JSON](https://rpradosilva.github.io/boneshaker-api/src/api/boneshaker-api.json) to your js file:
 
 ```js
-const api ="https://rpradosilva.github.io/boneshaker-api/src/api/boneshaker-api.json";
+const api =
+  "https://rpradosilva.github.io/boneshaker-api/src/api/boneshaker-api.json";
 
 async function getCars(api) {
   let apiObject = await fetch(api);
