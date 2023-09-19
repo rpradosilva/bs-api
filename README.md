@@ -56,7 +56,7 @@ JSON structure example:
 1. Clone repo
 2. `npm i`
 3. `npm start`
-4. Access the file into path: `./src/api/boneshaker-api.json`
+4. Access the file into path: `./src/api/bs-api.json`
 
 ## Authors
 
