@@ -17,11 +17,10 @@
 
 ## About
 
-To use, import [JSON](https://rpradosilva.github.io/boneshaker-api/src/api/boneshaker-api.json) to your js file:
+To use, import [JSON](https://rpradosilva.github.io/bs-api/src/api/bs-api.json) to your js file:
 
 ```js
-const api =
-  "https://rpradosilva.github.io/boneshaker-api/src/api/boneshaker-api.json";
+const api = "https://rpradosilva.github.io/boneshaker-api/src/api/bs-api.json";
 
 async function getCars(api) {
   let apiObject = await fetch(api);
